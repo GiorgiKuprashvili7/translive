@@ -4,25 +4,23 @@
   position: relative;
 
   span {
+    text-transform: capitalize;
     display: block;
     font-weight: 500;
     font-size: 14px;
     margin-bottom: 8px;
   }
 
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    font-size: 14px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: variables.$gray-800;
-    background-color: variables.$gray-50;
+  .selectContainer {
+    position: relative;
     border: 1px solid variables.$gray-300;
-    outline: none;
-    width: 100%;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    background-color: variables.$gray-50;
+    color: variables.$gray-800;
+    cursor: pointer;
+    user-select: none;
 
     &:hover {
       color: variables.$gray-600;
@@ -34,25 +32,59 @@
       border-color: variables.$primary-600;
     }
 
-    &:disabled {
+    &.open {
+      border-color: variables.$primary-600;
+    }
+
+    .selectedValue {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .arrow {
+      pointer-events: none;
+      position: absolute;
+      color: variables.$gray-600;
+      height: 20px;
+      width: 20px;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+    }
+
+    &.open .arrow {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .options {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background-color: white;
+      border: 1px solid variables.$gray-300;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+
+      .option {
+        padding: 12px 16px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: variables.$gray-100;
+        }
+      }
+    }
+
+    &.disabled {
       color: variables.$gray-600;
       background-color: #f9fafb;
       border-color: #d1d5db;
       opacity: 50%;
+      pointer-events: none;
     }
-  }
-  .arrow {
-    pointer-events: none;
-    position: absolute;
-    color: variables.$gray-600;
-    height: 20px;
-    width: 20px;
-    right: 16px;
-    bottom: 11px;
-    transform: rotate(180deg);
-  }
-
-  &.focused .arrow {
-    transform: rotate(0deg);
   }
 }

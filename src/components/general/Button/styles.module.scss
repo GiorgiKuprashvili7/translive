@@ -1,0 +1,41 @@
+@use "../../../variables";
+
+.btn {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 20px;
+  border-radius: 8px;
+  border: none;
+  line-height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 41px;
+
+  &.primary {
+    color: variables.$white;
+    background-color: variables.$primary-600;
+  }
+
+  &.secondary {
+    color: variables.$gray-800;
+    background-color: transparent;
+    border: 1px solid variables.$gray-200;
+  }
+
+  &.primaryDanger {
+    color: variables.$white;
+    background-color: variables.$red-500;
+  }
+
+  &.transparent {
+    color: variables.$gray-800;
+    background-color: transparent;
+  }
+
+  > * {
+    font-size: 20px;
+  }
+}

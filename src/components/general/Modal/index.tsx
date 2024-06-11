@@ -19,7 +19,7 @@ const Modal = ({ isOpen, onClose, title, content, actions }: propsType) => {
           <MdClose onClick={onClose} className={styles.closeBtn} />
         </div>
         <div className={styles.content}>{content}</div>
-        <div className={styles.actions}>{actions}</div>
+        {actions && <div className={styles.actions}>{actions}</div>}
       </div>
     </div>
   );
