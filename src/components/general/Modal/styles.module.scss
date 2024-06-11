@@ -1,0 +1,65 @@
+@use "../../../variables";
+
+.wrapper {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.open {
+    display: flex;
+  }
+}
+
+.background {
+  cursor: pointer;
+  z-index: -1;
+  position: absolute;
+  background: rgba(17, 25, 40, 0.3);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.modal {
+  margin: 20px;
+  width: 100%;
+  max-width: 646px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: variables.$white;
+}
+
+.modalHeader {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.closeBtn {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.actions {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

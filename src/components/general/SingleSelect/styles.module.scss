@@ -1,0 +1,58 @@
+@use "../../../variables";
+
+.wrapper {
+  position: relative;
+
+  span {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: variables.$gray-800;
+    background-color: variables.$gray-50;
+    border: 1px solid variables.$gray-300;
+    outline: none;
+    width: 100%;
+
+    &:hover {
+      color: variables.$gray-600;
+      border-color: variables.$gray-400;
+    }
+
+    &:focus {
+      color: variables.$gray-900;
+      border-color: variables.$primary-600;
+    }
+
+    &:disabled {
+      color: variables.$gray-600;
+      background-color: #f9fafb;
+      border-color: #d1d5db;
+      opacity: 50%;
+    }
+  }
+  .arrow {
+    pointer-events: none;
+    position: absolute;
+    color: variables.$gray-600;
+    height: 20px;
+    width: 20px;
+    right: 16px;
+    bottom: 11px;
+    transform: rotate(180deg);
+  }
+
+  &.focused .arrow {
+    transform: rotate(0deg);
+  }
+}
