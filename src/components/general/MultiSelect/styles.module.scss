@@ -2,6 +2,7 @@
 
 .wrapper {
   position: relative;
+  max-width: 100%;
 
   span {
     text-transform: capitalize;
@@ -35,9 +36,8 @@
   }
 
   .selectedValues {
-    background-color: red;
     overflow: hidden;
-    width: 50%;
+
     white-space: nowrap;
     text-overflow: ellipsis;
   }

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -8,8 +8,8 @@ type Option = {
 };
 
 type PropsType = {
+  name: string;
   label?: string;
-  placeholder?: string;
   options: Option[];
   defaultValue?: string[];
   onChange?: (values: string[]) => void;
@@ -22,7 +22,6 @@ const MultiSelect = ({
   defaultValue,
   onChange,
   disabled = false,
-  placeholder = "",
 }: PropsType) => {
   const [selectedValues, setSelectedValues] = useState<string[]>(
     defaultValue || []
@@ -42,11 +41,27 @@ const MultiSelect = ({
     }
   };
 
-  const toggleDropdown = () => {
-    if (!disabled) {
-      setIsOpen(!isOpen);
+  const handleDocumentClick = (e: MouseEvent) => {
+    if (
+      selectRef.current &&
+      !selectRef.current.contains(e.target as Node) &&
+      !(e.target as HTMLElement).classList.contains(styles.option)
+    ) {
+      setIsOpen(false);
     }
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleDocumentClick);
+    } else {
+      document.removeEventListener("click", handleDocumentClick);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [isOpen]);
 
   return (
     <div className={styles.wrapper}>
@@ -54,7 +69,7 @@ const MultiSelect = ({
       <div
         ref={selectRef}
         className={`${styles.selectContainer} ${isOpen ? styles.open : ""}`}
-        onClick={toggleDropdown}
+        onClick={() => !disabled && setIsOpen(!isOpen)}
         tabIndex={0}
       >
         <div className={styles.selectedValues}>
@@ -64,7 +79,7 @@ const MultiSelect = ({
                   (val) => options.find((option) => option.value === val)?.label
                 )
                 .join(", ")
-            : `${placeholder}`}
+            : "Select"}
         </div>
         <MdKeyboardArrowDown className={styles.arrow} />
         {isOpen && (

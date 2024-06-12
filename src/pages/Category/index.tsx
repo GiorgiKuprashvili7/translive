@@ -9,9 +9,12 @@ import Button from "../../components/general/Button";
 import { MdInfo } from "react-icons/md";
 import AddOrUpdateModal from "./components/AddOrUpdateModal";
 import TextArea from "../../components/general/TextArea";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PageTitle from "../../components/general/PageTitle";
 
 const Category = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const options = [
     { value: "apple", label: "Apple" },
@@ -44,15 +47,19 @@ const Category = () => {
     // Handle the selected values change here
     console.log("Selected values:", values);
   };
+  const notify = () => toast("Wow so easy !");
 
   return (
     <div>
-      <AddOrUpdateModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <PageTitle text="category" />
+      {/* <AddOrUpdateModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <Button
         text="Save"
         endIcon={<MdInfo />}
         onClick={() => setIsOpen(true)}
       />
+      <Button text="Save" endIcon={<MdInfo />} onClick={notify} />
+      <ToastContainer /> */}
       {/* <TextArea label="rame" value="" onChange={() => {}} />
       <DatePicker
         label="Date "

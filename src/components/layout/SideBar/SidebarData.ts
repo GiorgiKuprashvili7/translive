@@ -1,43 +1,63 @@
-export const SidebarData = [
+import {
+  HiChartPie,
+  HiClipboardList,
+  HiCollection,
+  HiDocumentReport,
+  HiShoppingBag,
+  HiSupport,
+} from "react-icons/hi";
+import { SidebarDataItem } from "../../../interfaces/ISidebarData";
+
+export const SidebarData: SidebarDataItem[] = [
   {
     title: "overview",
     path: "",
-    icon: "ICON",
+    icon: HiChartPie,
   },
   {
     title: "pages",
     path: "",
-    icon: "ICON",
+    icon: HiDocumentReport,
 
     subNav: [
       {
-        title: "sub",
-        path: "",
-        icon: "ICON",
-      },
-      {
         title: "Revenue",
         path: "",
-        icon: "ICON",
       },
     ],
   },
   {
     title: "category",
     path: "/category",
-    icon: "ICON",
+    icon: HiShoppingBag,
 
     subNav: [
       {
         title: "Revenue",
         path: "",
-        icon: "ICON",
+      },
+      {
+        title: "Admins",
+        path: "",
       },
     ],
   },
+];
+
+export const StaticSidebarData = [
   {
-    title: "Support",
+    title: "docs",
     path: "",
-    icon: "ICON",
+    icon: HiClipboardList,
+  },
+  {
+    title: "components",
+    path: "",
+    icon: HiCollection,
+  },
+  {
+    title: "help",
+    path: "",
+    icon: HiSupport,
   },
 ];

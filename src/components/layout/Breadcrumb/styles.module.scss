@@ -1,3 +1,21 @@
+@use "../../../variables" as var;
+
 .breadcrumb {
-  background-color: red;
+  // background-color: red;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var.$gray-700;
+  text-transform: capitalize;
+
+  .homeIcon {
+    font-size: 20px;
+    color: var.$gray-700;
+  }
+
+  .rightIcon {
+    font-size: 20px;
+    color: var.$gray-500;
+  }
 }

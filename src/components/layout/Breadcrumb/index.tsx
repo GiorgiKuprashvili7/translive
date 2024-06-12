@@ -1,12 +1,7 @@
+import { urlToBreadcrumbList } from "../../../utilities";
 import styles from "./styles.module.scss";
-
 import { useLocation } from "react-router";
-
-const urlToBreadcrumbList = (url: string) => {
-  const list = url.split("/");
-  list[0] = "home";
-  return list;
-};
+import { HiChevronRight, HiHome } from "react-icons/hi";
 
 const Breadcrumb = () => {
   const location = useLocation();
@@ -14,9 +9,14 @@ const Breadcrumb = () => {
 
   return (
     <div className={styles.breadcrumb}>
-      {breadcrumbData.map((o) => (
+      {breadcrumbData.map((o, i) => (
         <>
-          / <span>{o}</span>
+          {i === 0 ? (
+            <HiHome className={styles.homeIcon} />
+          ) : (
+            <HiChevronRight className={styles.rightIcon} />
+          )}
+          <span>{o}</span>
         </>
       ))}
     </div>

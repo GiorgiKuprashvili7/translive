@@ -2,24 +2,29 @@ import { Link } from "react-router-dom";
 import { SidebarDataItem } from "../../../interfaces/ISidebarData";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import { SidebarData } from "./SidebarData";
+import { SidebarData, StaticSidebarData } from "./SidebarData";
+import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 type SideBarProps = {
   isOpen: boolean;
 };
 const SideBar = ({ isOpen }: SideBarProps) => {
   return (
-    <>
-      <nav>
-        <div className={`${styles.sidebarNav} ${isOpen ? styles.active : ""}`}>
-          <div className={styles.sidebarWrap}>
-            {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
-            })}
-          </div>
+    <nav>
+      <div className={`${styles.sidebarNav} ${isOpen ? styles.active : ""}`}>
+        <div className={styles.sidebarWrap}>
+          {SidebarData.map((item, index) => {
+            return <SubMenu item={item} key={index} />;
+          })}
         </div>
-      </nav>
-    </>
+        <div className={styles.divider}></div>
+        <div className={`${styles.sidebarWrap} ${styles.staticRoutes}`}>
+          {StaticSidebarData.map((item, index) => {
+            return <SubMenu item={item} key={index} />;
+          })}
+        </div>
+      </div>
+    </nav>
   );
 };
 
@@ -38,23 +43,25 @@ const SubMenu = ({ item }: SubMenuProps) => {
 
   return (
     <>
-      <Link
-        to={item.path}
-        onClick={item.subNav && showSubnav}
-        className={styles.sidebarLink}
-      >
-        <div>
-          {item.icon}
-          <span className={styles.sidebarLabel}>{item.title}</span>
+      <div onClick={item.subNav && showSubnav} className={styles.sidebarLink}>
+        <div className={styles.IconAndLabel}>
+          <Link to={item.path} className={styles.link}>
+            <item.icon className={styles.itemIcon} />
+            <span className={styles.sidebarLabel}>{item.title}</span>
+          </Link>
         </div>
-        <div>{item.subNav && subnav ? "<" : item.subNav ? ">" : null}</div>
-      </Link>
+
+        {item.subNav && subnav ? (
+          <HiChevronUp className={styles.Chevron} />
+        ) : item.subNav ? (
+          <HiChevronDown className={styles.Chevron} />
+        ) : null}
+      </div>
       {subnav &&
         item.subNav &&
         item.subNav.map((item, index) => {
           return (
             <Link to={item.path} key={index} className={styles.dropdownLink}>
-              {item.icon}
               <span className={styles.sidebarLabel}>{item.title}</span>
             </Link>
           );

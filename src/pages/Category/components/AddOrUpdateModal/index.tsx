@@ -39,8 +39,8 @@ const AddOrUpdateModal = ({ isOpen, onClose }: propsType) => {
             <Input
               type="text"
               label="Category Name"
-              value=""
-              onChange={() => {}}
+              // value=""
+              // onChange={() => {}}
             />
             <Input
               type="text"
