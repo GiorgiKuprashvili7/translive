@@ -12,6 +12,7 @@ type propsType = {
     | "secondary-danger";
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -21,9 +22,11 @@ const Button = ({
   type = "button",
   startIcon,
   endIcon,
+  disabled = false,
 }: propsType) => {
   return (
     <button
+      disabled={disabled}
       type={type}
       onClick={onClick}
       className={`

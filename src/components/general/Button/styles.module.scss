@@ -1,4 +1,4 @@
-@use "../../../variables";
+@use "../../../variables" as var;
 
 .btn {
   text-transform: capitalize;
@@ -15,24 +15,34 @@
   height: 41px;
 
   &.primary {
-    color: variables.$white;
-    background-color: variables.$primary-600;
+    color: var.$white;
+    background-color: var.$primary-600;
   }
 
   &.secondary {
-    color: variables.$gray-800;
+    color: var.$gray-800;
     background-color: transparent;
-    border: 1px solid variables.$gray-200;
+    border: 1px solid var.$gray-200;
   }
 
   &.primaryDanger {
-    color: variables.$white;
-    background-color: variables.$red-500;
+    color: var.$white;
+    background-color: var.$red-500;
+  }
+
+  &.secondaryDanger {
+    color: var.$red-600;
+    background-color: transparent;
+    border: 1px solid var.$red-600;
   }
 
   &.transparent {
-    color: variables.$gray-800;
+    color: var.$gray-800;
     background-color: transparent;
+  }
+
+  &:disabled {
+    opacity: 50%;
   }
 
   > * {

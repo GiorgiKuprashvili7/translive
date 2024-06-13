@@ -4,7 +4,7 @@ export const categories = [
     name: "Web Development",
     description:
       "Designing, building, and maintaining software systemsCreating visual content for various purposes.  Data analysis, machine learning and maintaining software systems",
-    userIds: [1, 2, 3, 4],
+    userIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 10, 11],
     status: "ongoing",
   },
   {

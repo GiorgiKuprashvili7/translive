@@ -1,0 +1,37 @@
+@use "../../../../variables";
+
+.mainWrapper {
+  display: grid;
+  row-gap: 16px;
+}
+
+.imageBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 32px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  img {
+    height: 122px;
+    width: 122px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.twoInput {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 12px;
+  justify-content: end;
+
+  div {
+    margin-right: auto;
+  }
+}

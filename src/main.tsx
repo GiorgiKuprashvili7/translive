@@ -1,5 +1,4 @@
 import React from "react";
-// import ReactDOM from "react-dom/client";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createRoot } from "react-dom/client";
@@ -39,6 +38,5 @@ if (element) {
     </React.StrictMode>
   );
 } else {
-  // Handle the case where the element is not found in the DOM
   console.error('Element with ID "root" not found.');
 }

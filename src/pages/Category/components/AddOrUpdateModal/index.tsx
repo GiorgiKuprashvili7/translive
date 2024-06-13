@@ -27,7 +27,7 @@ const AddOrUpdateModal = ({ data, isOpen, onClose }: propsType) => {
 
   return (
     <Modal
-      title="Add New Category"
+      title="Edit Category"
       isOpen={isOpen}
       onClose={onClose}
       content={
@@ -48,7 +48,6 @@ const AddOrUpdateModal = ({ data, isOpen, onClose }: propsType) => {
           <MultiSelect
             label="members"
             options={memberOptions}
-            // defaultValue={["John Doe"]}
             defaultValue={users
               .filter((o) => data?.userIds.includes(o.id))
               .map((o) => o.fullName)}
@@ -58,7 +57,6 @@ const AddOrUpdateModal = ({ data, isOpen, onClose }: propsType) => {
       }
       actions={
         <div className={styles.buttonsWrapper}>
-          {/* if i have id in url show delete btn */}
           <div>
             <Button text="delete category" variant="primary-danger" />
           </div>

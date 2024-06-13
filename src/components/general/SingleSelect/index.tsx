@@ -57,7 +57,9 @@ const SingleSelect = ({
       {label && <span>{label}</span>}
       <div
         ref={selectRef}
-        className={`${styles.selectContainer} ${isOpen ? styles.open : ""}`}
+        className={`${styles.selectContainer} ${isOpen ? styles.open : ""} ${
+          disabled ? styles.disabled : ""
+        }`}
         onClick={() => !disabled && setIsOpen(!isOpen)}
         tabIndex={0}
       >

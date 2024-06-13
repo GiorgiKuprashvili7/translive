@@ -3,8 +3,8 @@ import styles from "./styles.module.scss";
 type propsType = {
   label?: string;
   placeholder?: string;
-  type: "text" | "email" | "password" | "number";
-  value?: string;
+  type?: "text" | "email" | "password" | "number";
+  value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   className?: string;

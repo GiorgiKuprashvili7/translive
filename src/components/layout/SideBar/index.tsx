@@ -7,13 +7,7 @@ import {
   StaticSidebarData,
   sidebarSettingsData,
 } from "./SidebarData";
-import {
-  HiAdjustments,
-  HiChevronDown,
-  HiChevronUp,
-  HiOutlineCog,
-  HiOutlineGlobe,
-} from "react-icons/hi";
+import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 type SideBarProps = {
   isOpen: boolean;

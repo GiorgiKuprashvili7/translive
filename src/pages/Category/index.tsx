@@ -8,12 +8,23 @@ import CategoryList from "./components/CategoryList";
 import { categories } from "../../Data";
 import { ICategory } from "../../interfaces/ICategory";
 import { useNavigate } from "react-router";
+import useToastNotification from "../../utilities/useToastNotification";
+import Toast from "../../components/general/Toast";
 
 const Category = () => {
   const [category, setCategory] = useState<ICategory | null>(null);
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
   const [filteredCategories, setFilteredCategories] = useState(categories);
+  const { toast, showToast, closeToast } = useToastNotification();
+
+  const onAddClick = () => {
+    showToast(
+      "Category Added",
+      "You have successfully added the Tennis Players category to your list!",
+      "success"
+    );
+  };
 
   useEffect(() => {
     setFilteredCategories(() => {
@@ -44,80 +55,23 @@ const Category = () => {
         data={filteredCategories}
         onEditClick={(o) => setCategory(o)}
         onMembersClick={(o) => navigate(`/category/${o.id}`)}
-        onAddClick={() => alert("add")}
+        onAddClick={onAddClick}
       />
-
-      {/* <Button text="Save" endIcon={<MdInfo />} onClick={notify} /> */}
-      {/* <Button
-        text="Save"
-        endIcon={<MdInfo />}
-        onClick={() => setIsOpen(true)}
-      /> */}
-      {/* <TextArea label="rame" value="" onChange={() => {}} />
-      <DatePicker
-        label="Date "
-        value=""
-        onChange={() => {}}
-        placeholder="birth"
-      />
-
-      <Input
-        type="text"
-        label="Full Name"
-        value=""
-        onChange={() => {}}
-        placeholder="email"
-      />
-      <Input
-        type="text"
-        label="email"
-        placeholder="email"
-        value="Giorga"
-        onChange={() => {}}
-      />
-      <Input
-        type="text"
-        label="email"
-        placeholder="email"
-        value="Giorga"
-        onChange={() => {}}
-        disabled={true}
-      />
-      <SingleSelect
-        name="fruit"
-        label="Select a Fruit"
-        options={options}
-        // defaultValue={selectedFruit}
-        onChange={handleFruitChange}
-      />
-
-      <MultiSelect
-        label="Select Options"
-        options={options2}
-        // defaultValue={} // Optional
-        onChange={handleMultiSelectChange} // Optional
-        disabled={false} // Optional
-      />
-      
-
-      <Button
-        text="Saveasdasasdasd"
-        variant="transparent"
-        startIcon={<MdInfo />}
-        endIcon={<MdInfo />}
-      />
-      <Button text="Save" variant="transparent" />
-      <Button text="Save" />
-      <Button text="Save" variant="secondary" />
-      <Button text="Save" variant="primary-danger" />
-      <Button text="Save" variant="secondary-danger" />
-     */}
 
       <AddOrUpdateModal
         data={category}
         isOpen={Boolean(category)}
         onClose={() => setCategory(null)}
       />
+
+      {toast && (
+        <Toast
+          title={toast.title}
+          message={toast.message}
+          type={toast.type}
+          closeToast={closeToast}
+        />
+      )}
     </>
   );
 };
