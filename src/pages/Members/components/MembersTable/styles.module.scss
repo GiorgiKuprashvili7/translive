@@ -1,0 +1,169 @@
+@use "../../../../variables" as var;
+
+.mainWrapper {
+  position: relative;
+  height: calc(100vh - 309px);
+}
+
+.tableWrapper {
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: visible;
+  height: calc(100vh - 292px);
+  width: calc(100vw - 250px);
+}
+
+.table {
+  border: none;
+  width: 100%;
+  min-width: 1200px;
+
+  thead {
+    position: sticky;
+    height: 46px;
+
+    top: 0;
+    z-index: 2;
+    background-color: var.$gray-100;
+
+    th {
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      padding-right: 20px;
+      color: var.$gray-600;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .editUser {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.checkbox {
+  margin-left: 20px;
+  width: 16px;
+  height: 16px;
+  outline: noen;
+}
+
+.searchInputsRow {
+  background-color: var.$gray-100;
+  height: 58px;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteBtn {
+  color: var.$gray-500;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.search {
+  flex-grow: 1;
+  margin-right: 20px;
+
+  input {
+    height: 38px !important;
+  }
+}
+
+.itemRow {
+  background-color: var.$white;
+
+  td {
+    height: 64px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .nameColumn {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    img {
+      height: 48px;
+      width: 48px;
+      background-color: red;
+      border-radius: 50%;
+    }
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var.$gray-900;
+    }
+    p {
+      font-size: 14px;
+      color: var.$gray-600;
+    }
+  }
+
+  .editUser {
+    button {
+      cursor: pointer;
+      text-transform: capitalize;
+      font-weight: 600;
+      color: var.$gray-900;
+      background: transparent;
+      border: none;
+      padding-right: 20px;
+    }
+  }
+
+  .status {
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    span {
+      flex-shrink: 0;
+      display: block;
+      // background-color: rgba(255, 0, 0, 0);
+      height: 10px;
+      width: 10px;
+      border: 1px solid var.$white;
+      border-radius: 50%;
+    }
+
+    &:global(.status-active) {
+      span {
+        background-color: var.$green-400;
+      }
+    }
+
+    &:global(.status-offline) {
+      span {
+        background-color: var.$red-500;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+.pagination {
+  position: absolute;
+  bottom: -74px;
+  background-color: var.$white;
+  width: 100%;
+  height: 74px;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+
+  span {
+    margin-right: auto;
+  }
+}

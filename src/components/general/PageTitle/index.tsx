@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 
 type propsType = {
-  text: string;
+  text?: string;
 };
 
 const PageTitle = ({ text }: propsType) => {

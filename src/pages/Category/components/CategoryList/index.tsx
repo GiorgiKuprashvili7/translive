@@ -1,4 +1,4 @@
-import { HiPencilAlt } from "react-icons/hi";
+import { HiPencilAlt, HiPlusSm } from "react-icons/hi";
 import { users } from "../../../../Data";
 import styles from "./styles.module.scss";
 import { ICategory } from "../../../../interfaces/ICategory";
@@ -7,12 +7,14 @@ type propsType = {
   data: ICategory[];
   onMembersClick?: (item: ICategory) => void;
   onEditClick?: (item: ICategory) => void;
+  onAddClick?: () => void;
 };
 
 const CategoryList = ({
   data,
   onMembersClick = () => {},
   onEditClick = () => {},
+  onAddClick = () => {},
 }: propsType) => {
   return (
     <div className={styles.container}>
@@ -50,6 +52,9 @@ const CategoryList = ({
           </div>
         </div>
       ))}
+      <div className={`${styles.card} ${styles.addCard}`} onClick={onAddClick}>
+        <HiPlusSm />
+      </div>
     </div>
   );
 };
