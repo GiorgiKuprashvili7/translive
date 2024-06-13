@@ -1,21 +1,17 @@
-import { urlToBreadcrumbList } from "../../../utilities";
+import { useBreadcrumbList } from "../../../utilities";
 import styles from "./styles.module.scss";
-import { useLocation } from "react-router";
 import { HiChevronRight, HiHome } from "react-icons/hi";
 
 const Breadcrumb = () => {
-  const location = useLocation();
-  const breadcrumbData = urlToBreadcrumbList(location.pathname);
-
+  const breadcrumbData = useBreadcrumbList();
+  console.log(breadcrumbData);
   return (
     <div className={styles.breadcrumb}>
       {breadcrumbData.map((o, i) => (
         <>
-          {i === 0 ? (
-            <HiHome className={styles.homeIcon} />
-          ) : (
-            <HiChevronRight className={styles.rightIcon} />
-          )}
+          {i === 0 && <HiHome className={styles.homeIcon} />}
+          {i > 0 && <HiChevronRight className={styles.rightIcon} />}
+
           <span>{o}</span>
         </>
       ))}

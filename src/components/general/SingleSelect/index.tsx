@@ -8,7 +8,6 @@ type Option = {
 };
 
 type PropsType = {
-  name: string;
   label?: string;
   options: Option[];
   defaultValue?: string;
@@ -63,14 +62,14 @@ const SingleSelect = ({
         tabIndex={0}
       >
         <div className={styles.selectedValue}>
-          {options.find((option) => option.value === selectedValue)?.label
-            ? options.find((option) => option.value === selectedValue)?.label
+          {options?.find((option) => option.value === selectedValue)?.label
+            ? options?.find((option) => option.value === selectedValue)?.label
             : "Select"}
         </div>
         <MdKeyboardArrowDown className={styles.arrow} />
         {isOpen && (
           <div className={styles.options}>
-            {options.map((option) => (
+            {options?.map((option) => (
               <div
                 key={option.value}
                 className={styles.option}

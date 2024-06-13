@@ -1,65 +1,65 @@
-import { useState } from "react";
-import GridView from "../../components/general/GridView";
-import Modal from "../../components/general/Modal";
-import Input from "../../components/general/Input";
 import SingleSelect from "../../components/general/SingleSelect";
 import MultiSelect from "../../components/general/MultiSelect";
 import DatePicker from "../../components/general/DatePicker";
 import Button from "../../components/general/Button";
 import { MdInfo } from "react-icons/md";
-import AddOrUpdateModal from "./components/AddOrUpdateModal";
 import TextArea from "../../components/general/TextArea";
-import { ToastContainer, toast } from "react-toastify";
+import Modal from "../../components/general/Modal";
+import styles from "./styles.module.scss";
+import { useEffect, useState } from "react";
+import Input from "../../components/general/Input";
+import AddOrUpdateModal from "./components/AddOrUpdateModal";
+import { Id, ToastContainer, ToastOptions, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PageTitle from "../../components/general/PageTitle";
+import CategoryList from "./components/CategoryList";
+
+import { categories } from "../../Data";
+import { ICategory } from "../../interfaces/ICategory";
+import { Msg } from "../../components/general/Toast";
 
 const Category = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [category, setCategory] = useState<ICategory | null>(null);
 
-  const options = [
-    { value: "apple", label: "Apple" },
-    { value: "banana", label: "Banana" },
-    { value: "orange", label: "Orange" },
-  ];
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredCategories, setFilteredCategories] = useState(categories);
 
-  const [selectedFruit, setSelectedFruit] = useState("apple");
-
-  const handleFruitChange = (value: string) => {
-    setSelectedFruit(value);
-  };
-
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-  const options2 = [
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" },
-    { value: "option3", label: "Option 3" },
-    { value: "option123", label: "Option 1" },
-    { value: "option2asd", label: "Option 2" },
-    { value: "option3fgds", label: "Option 3" },
-    { value: "option1fhdg", label: "Option 1" },
-    { value: "option2asd", label: "Option 2" },
-    { value: "option3asd", label: "Option 3" },
-    // Add more options as needed
-  ];
-
-  // Define a function to handle changes to the selected values
-  const handleMultiSelectChange = (values: string[]) => {
-    // Handle the selected values change here
-    console.log("Selected values:", values);
-  };
-  const notify = () => toast("Wow so easy !");
+  useEffect(() => {
+    setFilteredCategories(() => {
+      if (searchInput.length) {
+        return categories.filter((o) =>
+          o.name.toLowerCase().includes(searchInput.toLowerCase())
+        );
+      } else {
+        return categories;
+      }
+    });
+  }, [searchInput]);
 
   return (
-    <div>
-      <PageTitle text="category" />
-      {/* <AddOrUpdateModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      <Button
+    <>
+      <div className={styles.pageTop}>
+        <PageTitle text="category" />
+        <Input
+          className={styles.searchInput}
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search for users"
+        />
+      </div>
+
+      <CategoryList
+        data={filteredCategories}
+        onEditClick={(o) => setCategory(o)}
+      />
+
+      {/* <Button text="Save" endIcon={<MdInfo />} onClick={notify} /> */}
+      {/* <Button
         text="Save"
         endIcon={<MdInfo />}
         onClick={() => setIsOpen(true)}
-      />
-      <Button text="Save" endIcon={<MdInfo />} onClick={notify} />
-      <ToastContainer /> */}
+      /> */}
       {/* <TextArea label="rame" value="" onChange={() => {}} />
       <DatePicker
         label="Date "
@@ -105,7 +105,7 @@ const Category = () => {
         onChange={handleMultiSelectChange} // Optional
         disabled={false} // Optional
       />
-      <GridView />
+      
 
       <Button
         text="Saveasdasasdasd"
@@ -119,7 +119,14 @@ const Category = () => {
       <Button text="Save" variant="primary-danger" />
       <Button text="Save" variant="secondary-danger" />
      */}
-    </div>
+
+      <ToastContainer />
+      <AddOrUpdateModal
+        data={category}
+        isOpen={Boolean(category)}
+        onClose={() => setCategory(null)}
+      />
+    </>
   );
 };
 

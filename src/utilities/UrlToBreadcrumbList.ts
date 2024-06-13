@@ -1,5 +1,10 @@
-export const urlToBreadcrumbList = (url: string) => {
-  const list = url.split("/");
+import { useLocation } from "react-router";
+
+export const useBreadcrumbList = () => {
+  const location = useLocation();
+  console.log(location);
+  const list = location.pathname.split("/");
   list[0] = "home";
-  return list;
+
+  return list.filter((o) => o !== "");
 };

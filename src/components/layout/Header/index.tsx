@@ -8,9 +8,9 @@ type propsType = {
 
 const Header = ({ onMenuClick }: propsType) => {
   return (
-    <header onClick={onMenuClick}>
+    <header>
       <div className={styles.leftContainer}>
-        <HiMenuAlt2 className={styles.icon} />
+        <HiMenuAlt2 className={styles.icon} onClick={onMenuClick} />
         <img src={logo} alt="translive logo" />
       </div>
 

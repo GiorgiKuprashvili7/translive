@@ -2,51 +2,56 @@ export const categories = [
   {
     id: 1,
     name: "Web Development",
-    description: "Building websites and web applications.",
+    description:
+      "Designing, building, and maintaining software systemsCreating visual content for various purposes.  Data analysis, machine learning and maintaining software systems",
     userIds: [1, 2, 3, 4],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
   {
     id: 2,
     name: "Mobile Development",
-    description: "Developing apps for mobile devices (iOS and Android).",
+    description:
+      "Developing apps for mobile devices (iOS and Android) Data analysis, machine learning, and data visualization",
     userIds: [2, 3, 5, 6, 7, 8],
-    categoryStatus: "finished",
+    status: "finished",
   },
   {
     id: 3,
     name: "Data Science",
-    description: "Data analysis, machine learning, and data visualization.",
+    description:
+      "This category includes users who have a keen interest in music, attending concerts and staying updated with the latest releases across various genres.",
     userIds: [1, 4, 7],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
   {
     id: 4,
-    name: "Game Development",
-    description: "Creating games for various platforms.",
+    name: "Runners",
+    description:
+      "This category includes users who regularly participate in running activities, including marathons and daily jogging routines.",
     userIds: [5, 6, 9, 10],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
   {
     id: 5,
     name: "Graphic Design",
-    description: "Creating visual content for various purposes.",
+    description:
+      "Designing, building, and maintaining software systemsCreating visual content for various purposes.  Data analysis, machine learning and maintaining software systems",
     userIds: [7, 8, 11, 12],
-    categoryStatus: "finished",
+    status: "finished",
   },
   {
     id: 6,
     name: "Software Engineering",
     description: "Designing, building, and maintaining software systems.",
     userIds: [9, 10, 13, 14],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
   {
     id: 7,
     name: "Cybersecurity",
     description: "Protecting computer systems from unauthorized access.",
     userIds: [11, 12, 15, 16],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
   {
     id: 8,
@@ -54,7 +59,7 @@ export const categories = [
     description:
       "Creating and distributing valuable content to attract customers.",
     userIds: [13, 14],
-    categoryStatus: "finished",
+    status: "finished",
   },
   {
     id: 9,
@@ -62,13 +67,13 @@ export const categories = [
     description:
       "Improving the visibility of websites in search engine results.",
     userIds: [15, 16, 19, 20],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
   {
     id: 10,
     name: "Cloud Computing",
     description: "Delivering on-demand computing resources over the internet.",
     userIds: [17],
-    categoryStatus: "ongoing",
+    status: "ongoing",
   },
 ];

@@ -1,20 +1,7 @@
 @use "../../../variables" as var;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.wrapper {
-  display: flex;
-}
-
-.content {
-  flex-grow: 1;
-}
-
 header {
+  z-index: 999;
   position: sticky;
   top: 0;
   height: 60px;

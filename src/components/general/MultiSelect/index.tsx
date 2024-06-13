@@ -8,7 +8,6 @@ type Option = {
 };
 
 type PropsType = {
-  name: string;
   label?: string;
   options: Option[];
   defaultValue?: string[];
@@ -26,6 +25,7 @@ const MultiSelect = ({
   const [selectedValues, setSelectedValues] = useState<string[]>(
     defaultValue || []
   );
+
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
@@ -75,10 +75,15 @@ const MultiSelect = ({
         <div className={styles.selectedValues}>
           {selectedValues.length > 0
             ? selectedValues
+                .slice(0, 3)
                 .map(
                   (val) => options.find((option) => option.value === val)?.label
                 )
-                .join(", ")
+                .join(", ") +
+              `${
+                selectedValues.length > 3 &&
+                `and ${selectedValues.length - 3} user`
+              }`
             : "Select"}
         </div>
         <MdKeyboardArrowDown className={styles.arrow} />

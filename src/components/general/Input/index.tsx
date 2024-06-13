@@ -7,9 +7,11 @@ type propsType = {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  className?: string;
 };
 
 const Input = ({
+  className,
   type = "text",
   placeholder,
   label,
@@ -18,7 +20,7 @@ const Input = ({
   disabled = false,
 }: propsType) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${className}`}>
       {label && <span>{label}</span>}
       <input
         type={type}

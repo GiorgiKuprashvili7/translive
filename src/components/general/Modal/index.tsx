@@ -11,17 +11,21 @@ type propsType = {
 
 const Modal = ({ isOpen, onClose, title, content, actions }: propsType) => {
   return (
-    <div className={`${styles.wrapper} ${isOpen ? styles.open : ""}`}>
-      <div className={styles.background} onClick={onClose}></div>
-      <div className={styles.modal}>
-        <div className={styles.modalHeader}>
-          <h3 className={styles.title}>{title}</h3>
-          <MdClose onClick={onClose} className={styles.closeBtn} />
+    <>
+      {isOpen ? (
+        <div className={`${styles.wrapper} ${isOpen ? styles.open : ""}`}>
+          <div className={styles.background} onClick={onClose}></div>
+          <div className={styles.modal}>
+            <div className={styles.modalHeader}>
+              <h3 className={styles.title}>{title}</h3>
+              <MdClose onClick={onClose} className={styles.closeBtn} />
+            </div>
+            <div className={styles.content}>{content}</div>
+            {actions && <div className={styles.actions}>{actions}</div>}
+          </div>
         </div>
-        <div className={styles.content}>{content}</div>
-        {actions && <div className={styles.actions}>{actions}</div>}
-      </div>
-    </div>
+      ) : null}
+    </>
   );
 };
 

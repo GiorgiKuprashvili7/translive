@@ -4,34 +4,31 @@ import Modal from "../../../../components/general/Modal";
 import MultiSelect from "../../../../components/general/MultiSelect";
 import TextArea from "../../../../components/general/TextArea";
 import Button from "../../../../components/general/Button";
+import { ICategory } from "../../../../interfaces/ICategory";
+import SingleSelect from "../../../../components/general/SingleSelect";
+import { users } from "../../../../Data";
 
 type propsType = {
   isOpen: boolean;
   onClose: () => void;
+  data: ICategory | null;
 };
 
-const AddOrUpdateModal = ({ isOpen, onClose }: propsType) => {
-  const options = [
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" },
-    { value: "option3", label: "Option 3" },
-    { value: "option123", label: "Option 1" },
-    { value: "option2asd", label: "Option 2" },
-    { value: "option3fgds", label: "Option 3" },
-    { value: "option1fhdg", label: "Option 1" },
-    { value: "option2asd", label: "Option 2" },
-    { value: "option3asd", label: "Option 3" },
-    { value: "option3fgasdds", label: "Option 3" },
-    { value: "option1fashdg", label: "Option 1" },
-    { value: "option2aqsd", label: "Option 2" },
-    { value: "option3aassd", label: "Option 3" },
+const AddOrUpdateModal = ({ data, isOpen, onClose }: propsType) => {
+  const statusOptions = [
+    { value: "ongoing", label: "ongoing" },
+    { value: "finished", label: "finished" },
   ];
+
+  const memberOptions = users.map((o) => ({
+    value: o.fullName,
+    label: o.fullName,
+  }));
 
   return (
     <Modal
       title="Add New Category"
       isOpen={isOpen}
-      // onClose={() => setIsOpen(false)}
       onClose={onClose}
       content={
         <div className={styles.mainWrapper}>
@@ -39,22 +36,32 @@ const AddOrUpdateModal = ({ isOpen, onClose }: propsType) => {
             <Input
               type="text"
               label="Category Name"
-              // value=""
+              value={data?.name}
               // onChange={() => {}}
             />
-            <Input
-              type="text"
-              label="Category Name"
-              value=""
-              onChange={() => {}}
+            <SingleSelect
+              label="status"
+              options={statusOptions}
+              defaultValue={data?.status}
             />
           </div>
-          <MultiSelect label="members" options={options} />
-          <TextArea label="short description" />
+          <MultiSelect
+            label="members"
+            options={memberOptions}
+            // defaultValue={["John Doe"]}
+            defaultValue={users
+              .filter((o) => data?.userIds.includes(o.id))
+              .map((o) => o.fullName)}
+          />
+          <TextArea label="short description" value={data?.description} />
         </div>
       }
       actions={
         <div className={styles.buttonsWrapper}>
+          {/* if i have id in url show delete btn */}
+          <div>
+            <Button text="delete category" variant="primary-danger" />
+          </div>
           <Button text="cencel" variant="secondary" />
           <Button text="Save" />
         </div>

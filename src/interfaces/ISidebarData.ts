@@ -9,5 +9,5 @@ export interface SidebarDataItem {
   title: string;
   path: string;
   icon: IconType;
-  subNav?: SubNavItem[]; // Optional subNav property
+  subNav?: SubNavItem[];
 }

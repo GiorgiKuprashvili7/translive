@@ -1,8 +1,11 @@
 import {
+  HiAdjustments,
   HiChartPie,
   HiClipboardList,
   HiCollection,
   HiDocumentReport,
+  HiOutlineCog,
+  HiOutlineGlobe,
   HiShoppingBag,
   HiSupport,
 } from "react-icons/hi";
@@ -61,3 +64,20 @@ export const StaticSidebarData = [
     icon: HiSupport,
   },
 ];
+
+export const sidebarSettingsData = [
+  {
+    path: "",
+    icon: HiAdjustments,
+  },
+  {
+    path: "",
+    icon: HiOutlineCog,
+  },
+  {
+    path: "",
+    icon: HiOutlineGlobe,
+  },
+];
+
+StaticSidebarData;

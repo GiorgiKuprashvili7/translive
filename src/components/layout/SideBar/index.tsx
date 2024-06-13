@@ -2,8 +2,18 @@ import { Link } from "react-router-dom";
 import { SidebarDataItem } from "../../../interfaces/ISidebarData";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import { SidebarData, StaticSidebarData } from "./SidebarData";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi";
+import {
+  SidebarData,
+  StaticSidebarData,
+  sidebarSettingsData,
+} from "./SidebarData";
+import {
+  HiAdjustments,
+  HiChevronDown,
+  HiChevronUp,
+  HiOutlineCog,
+  HiOutlineGlobe,
+} from "react-icons/hi";
 
 type SideBarProps = {
   isOpen: boolean;
@@ -22,6 +32,13 @@ const SideBar = ({ isOpen }: SideBarProps) => {
           {StaticSidebarData.map((item, index) => {
             return <SubMenu item={item} key={index} />;
           })}
+        </div>
+        <div className={styles.footer}>
+          {sidebarSettingsData.map((o) => (
+            <Link to={o.path}>
+              <o.icon />
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

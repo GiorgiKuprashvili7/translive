@@ -1,7 +1,6 @@
 @use "../../../variables" as var;
 
 .nav {
-  background: #15171c;
   height: 80px;
   display: flex;
   justify-content: flex-start;
@@ -32,6 +31,11 @@
 
   &.active {
     width: 250px;
+  }
+
+  @media (max-width: var.$small) {
+    position: fixed;
+    z-index: 999;
   }
 }
 
@@ -105,4 +109,22 @@
 .divider {
   height: 1px;
   background-color: var.$gray-200;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+  font-size: 24px;
+
+  > * {
+    display: flex;
+    align-items: center;
+    color: var.$gray-900;
+  }
 }

@@ -3,7 +3,7 @@ import React from "react";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createRoot } from "react-dom/client";
-import Home from "./pages/Home";
+import NotImplemented from "./pages/NotImplemented";
 import RootLayout from "./components/layout/RootLayout";
 import Category from "./pages/Category";
 import Members from "./pages/Members";
@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <NotImplemented />,
       },
       {
         path: "/category",
